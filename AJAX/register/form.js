@@ -7,6 +7,7 @@ $(document).ready(function () {
             name: $("#name").val(),
             email: $("#email").val().toLowerCase(),
             password: $("#password").val(),
+            password2: $("#password2").val(),
         };
         console.log(formData);
         let VALID = true;
@@ -22,6 +23,13 @@ $(document).ready(function () {
             $("#password-group").addClass("has-error");
             $("#password-group").append('<div class="help-block">' + 'Password is required.' + "</div>");
         }
+        if (formData['password'] !== formData['password2']) {
+            VALID = false;
+            $("#password-group").addClass("has-error");
+            $("#password2-group").addClass("has-error");
+            $("#password2-group").append('<div class="help-block">' + 'Password Not matching!' + "</div>");
+        }
+
 
         if (formData['name'].trim() === '') {
             VALID = false;
